@@ -1,45 +1,30 @@
 import { useState } from "react";
 
 function General() {
-  const [name, setName] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  return (
-    <>
-      <h1>General Information</h1>
-      <div>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="jobTitle">Job Title</label>
-        <input
-          type="text"
-          id="jobTitle"
-          name="jobTitle"
-          value={jobTitle}
-          onChange={(e) => setJobTitle(e.target.value)}
-        />
-      </div>
-      <Contacts />
-    </>
-  );
-}
-
-function Contacts() {
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
   const [website, setWebsite] = useState("");
 
   return (
     <>
+      <h2>Personal Details</h2>
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="fullName">Full name</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="email">
+          Email
+          <span style={{ color: "gray", fontSize: "0.9em" }}> recommended</span>
+        </label>
         <input
           type="email"
           id="email"
@@ -50,18 +35,34 @@ function Contacts() {
         />
       </div>
       <div>
-        <label htmlFor="phone">Phone</label>
+        <label htmlFor="phoneNumber">
+          Phone number{" "}
+          <span style={{ color: "gray", fontSize: ".9em" }}> recommended</span>
+        </label>
         <input
           type="tel"
-          id="phone"
-          name="phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          id="phoneNumber"
+          name="phoneNumber"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
           placeholder="(555) 123-4567"
         />
       </div>
       <div>
-        <label htmlFor="website">Website:</label>
+        <label htmlFor="address">
+          Address
+          <span style={{ color: "gray", fontSize: ".9em" }}> recommended</span>
+        </label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          value={address}
+          onchange={(e) => setAddress(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="website">Website</label>
         <input
           type="url"
           id="website"
