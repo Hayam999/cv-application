@@ -2,9 +2,7 @@ function Resume() {
   return (
     <>
       <Header />
-      <Experience />
-      <Education />
-      <Portfolio />
+      <Content />
     </>
   );
 }
@@ -85,4 +83,60 @@ function Interests() {
     </>
   );
 }
+
+function Content() {
+  return (
+    <>
+      <div>
+        <div>
+          {/* [ ]Add Profile icon */}
+          <h3>Profile</h3>
+        </div>
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
+            incidunt perspiciatis possimus alias corrupti unde quam culpa qui
+            tempora laborum, doloribus suscipit eos a, quisquam ab voluptate.
+            Nostrum, ratione quidem!
+          </p>
+        </div>
+      </div>
+      <div>
+        <div>
+          {/*[ ] Add Experience icon */}
+          <h3>Experience</h3>
+        </div>
+        <div>
+          <h4>Senior Graphic Designer</h4>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
+            reiciendis. Dolore error ipsum quos, doloremque neque iure
+            explicabo?{" "}
+          </p>
+        </div>
+        <div>
+          <h4>Graphic Designer</h4>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
+            reiciendis. Dolore error ipsum quos, doloremque neque iure
+            explicabo?{" "}
+          </p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h3>{/*[ ] Add Education Icon */} Education</h3>
+        </div>
+        <div>
+          <h4>Bachelor of Fine Arts in Graphic Design</h4>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Perspiciatis ipsam, amet veritatis
+          </p>
+        </div>
+      </div>
+    </>
+  );
+}
+
 export default Resume;
