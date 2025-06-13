@@ -1,0 +1,13 @@
+.resume {
+  display: flex;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
