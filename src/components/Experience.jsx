@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { MdWork } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 import { MdCancel } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
+import { useState } from "react";
 
 function Experience() {
   return (
@@ -28,7 +28,6 @@ function AddExperience() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [location, setLocation] = useState("");
-
   return (
     <>
       <div>
@@ -37,9 +36,9 @@ function AddExperience() {
           type="text"
           id="companyName"
           name="companyName"
+          placeholder="Enter Company Name"
           value={companyName}
           onChange={(e) => setCompanyName(e.target.value)}
-          placeholder="Enter Company Name"
         />
       </div>
       <div>
@@ -48,9 +47,9 @@ function AddExperience() {
           type="text"
           id="positionTitle"
           name="positionTitle"
+          placeholder="Enter Position Title"
           value={positionTitle}
           onChange={(e) => setPositionTitle(e.target.value)}
-          placeholder="Enter Position Title"
         />
       </div>
       <div>
@@ -59,20 +58,18 @@ function AddExperience() {
           id="startDate"
           name="startDate"
           type="date"
-          value={startDate}
           placeholder="Enter Start Date"
+          value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
-          max={endDate}
         />
         <label htmlFor="endDate">End Date</label>
         <input
           type="date"
           id="endDate"
           name="endDate"
-          value={endDate}
           placeholder="Enter End Date"
-          onChange={(e) => setEndDate(e.target.value)}
-          min={startDate}
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.setEndDate)}
         />
       </div>
       <div>
@@ -84,9 +81,9 @@ function AddExperience() {
           type="text"
           name="location"
           id="location"
+          placeholder="Enter location"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
-          placeholder="Enter location"
         />
       </div>
       <div>
@@ -97,11 +94,11 @@ function AddExperience() {
         <textarea
           id="mainResponsibs"
           name="mainResponsibs"
-          value={mainResponsibs}
           rows={5}
           cols={20}
-          onChange={(e) => setMainResponsibs(e.target.value)}
           placeholder="Describe your Main Responsibilities at that position"
+          value={mainResponsibs}
+          onChange={(e) => setMainResponsibs(e.target.value)}
         />
       </div>
       <div>

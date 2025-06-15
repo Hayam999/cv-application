@@ -6,7 +6,6 @@ function General() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [website, setWebsite] = useState("");
-
   return (
     <>
       <h2>Personal Details</h2>
@@ -29,9 +28,9 @@ function General() {
           type="email"
           id="email"
           name="email"
+          placeholder="user-name@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="user-name@example.com"
         />
       </div>
       <div>
@@ -43,9 +42,9 @@ function General() {
           type="tel"
           id="phoneNumber"
           name="phoneNumber"
+          placeholder="(555) 123-4567"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
-          placeholder="(555) 123-4567"
         />
       </div>
       <div>
@@ -58,7 +57,7 @@ function General() {
           id="address"
           name="address"
           value={address}
-          onchange={(e) => setAddress(e.target.value)}
+          onChange={(e) => setAddress(e.target.value)}
         />
       </div>
       <div>
@@ -67,9 +66,9 @@ function General() {
           type="url"
           id="website"
           name="website"
+          placeholder="https://www.example.com"
           value={website}
           onChange={(e) => setWebsite(e.target.value)}
-          placeholder="https://www.example.com"
         />
       </div>
     </>

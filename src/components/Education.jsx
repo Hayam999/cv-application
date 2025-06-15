@@ -24,7 +24,6 @@ function AddSchool() {
   const [schoolName, setSchoolName] = useState("");
   const [degree, setDegree] = useState("");
   const [startDate, setStartDate] = useState("");
-
   const [location, setLocation] = useState("");
   return (
     <>
@@ -34,9 +33,9 @@ function AddSchool() {
           type="text"
           id="schoolName"
           name="schoolName"
+          placeholder="Enter School Name"
           value={schoolName}
           onChange={(e) => setSchoolName(e.target.value)}
-          placeholder="Enter School Name"
         />
       </div>
       <div>
@@ -45,9 +44,9 @@ function AddSchool() {
           type="text"
           id="degree"
           name="degree"
+          placeholder="Ex: Master's Degree in Math"
           value={degree}
           onChange={(e) => setDegree(e.target.value)}
-          placeholder="Ex: Master's Degree in Math"
         />
       </div>
       <div>
@@ -70,9 +69,9 @@ function AddSchool() {
           type="text"
           name="location"
           id="location"
+          placeholder="Enter location"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
-          placeholder="Enter location"
         />
       </div>
       <div>

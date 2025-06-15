@@ -7,7 +7,12 @@ Thursday, June 12, 2025 10:53
 [x] Modify component details
 | [x] ADD Logos to Education and Experience headers
 
-[ ] Make Resume componet
+Friday June 13, 2025
+[x] Make Resume componet
+[x] Add basic styles to resume
+
+Sunday June 15, 2025
+[x] connect form information to resume
 
 [ ] create school component with the visibility functioality
 
