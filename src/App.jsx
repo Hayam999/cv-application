@@ -12,15 +12,20 @@ function App() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [website, setWebsite] = useState("");
-  const [schoolName, setSchoolName] = useState("");
+  const [schools, setSchools] = useState([]);
+  const [companys, setCompanys] = useState([]);
+
+  {
+    /* const [schoolName, setSchoolName] = useState("");
   const [degree, setDegree] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [positionTitle, setPositionTitle] = useState("");
   const [mainResponsibs, setMainResponsibs] = useState("");
+  const [companyStartDate, setCompanyStartDate] = useState("");
+  const [companyEndDate, setCompanyEndDate] = useState("");
+  const [companyLocation, setCompanyLocation] = useState("");
   {
-    /*const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [location, setLocation] = useState("");
+    /*
   const [startDate, setStartDate] = useState("");
 /*const [location, setLocation] = useState("");*/
   }
@@ -30,11 +35,16 @@ function App() {
     setPhoneNumber,
     setAddress,
     setWebsite,
-    setSchoolName,
+    setSchools,
+    setCompanys,
+    /* setSchoolName,
     setDegree,
     setCompanyName,
     setPositionTitle,
     setMainResponsibs,
+    setCompanyStartDate,
+    setCompanyEndDate,
+    setCompanyLocation, */
   };
 
   const resumeData = {
@@ -43,16 +53,26 @@ function App() {
     phoneNumber,
     address,
     website,
-    schoolName,
+    schools,
+    companys,
+    /*schoolName,
     degree,
     companyName,
     positionTitle,
     mainResponsibs,
+    companyStartDate,
+    companyEndDate,
+    companyLocation,*/
   };
 
   return (
     <div className={styles.app}>
-      <Form setters={setters} resumeData={resumeData} />
+      <Form
+        setters={setters}
+        resumeData={resumeData}
+        companys={companys}
+        schools={schools}
+      />
       <Resume resumeData={resumeData} />
     </div>
   );

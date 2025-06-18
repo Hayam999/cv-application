@@ -16,4 +16,6 @@ Sunday June 15, 2025
 [x] Add folding functionality to Experience and Education btns
 
 wednesday, June 18, 2025 6:39
-[ ] Add Education, Experience buttons functionality
+[x] Add Education, Experience buttons functionality
+[ ] Add Experience and Education submission functionality
+[ ] Add (cancel, save, Delete) btns functionality for Experience and Education;
