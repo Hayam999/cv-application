@@ -133,15 +133,20 @@ export function Form({ setters }) {
         </>
       );
     }
-    return (
-      <>
-        {/** [ ] Add Expereiences with visibility functionality */}
 
-        <button>
+    const [addExperienceVisiblity, setAddExperienceVisibility] =
+      useState(false);
+
+    if (!addExperienceVisiblity) {
+      return (
+        <button
+          onClick={() => setAddExperienceVisibility(!addExperienceVisiblity)}
+        >
           <IoMdAdd /> Experience
         </button>
-      </>
-    );
+      );
+    }
+    return <AddExperience />;
   }
   function General() {
     return (
@@ -327,14 +332,17 @@ export function Form({ setters }) {
       );
     }
 
-    return (
-      <>
-        <button>
+    const [addSchoolVisiblity, setAddSchoolVisiblity] = useState(false);
+
+    if (!addSchoolVisiblity) {
+      return (
+        <button onClick={() => setAddSchoolVisiblity(!addSchoolVisiblity)}>
           <IoMdAdd />
           Education
         </button>
-      </>
-    );
+      );
+    }
+    return <AddSchool />;
   }
 
   function handleFoldExp() {

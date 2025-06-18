@@ -14,8 +14,6 @@ Friday June 13, 2025
 Sunday June 15, 2025
 [x] connect form information to resume
 [x] Add folding functionality to Experience and Education btns
-[ ] create school component with the visibility functioality
 
+wednesday, June 18, 2025 6:39
 [ ] Add Education, Experience buttons functionality
-
-[ ] Add folding functionality to Education and Experience sections
