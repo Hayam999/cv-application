@@ -212,6 +212,8 @@ function Experience({
   setCompanys,
   addExperienceVisiblity,
   setAddExperienceVisibility,
+  currentCoId,
+  setCurrentCoId,
 }) {
   const [companyName, setCompanyName] = useState("");
   const [positionTitle, setPositionTitle] = useState("");
@@ -235,53 +237,86 @@ function Experience({
   }
 
   function updateCompanys(coInfo) {
-    setCompanys([
-      ...companys,
-      {
-        id: crypto.randomUUID(),
-        companyName: coInfo.companyName,
-        positionTitle: coInfo.positionTitle,
-        companyStartDate: coInfo.companyStartDate,
-        companyEndDate: coInfo.companyEndDate,
-        companyLocation: coInfo.companyLocation,
-        mainResponsibs: coInfo.mainResponsibs,
-      },
-    ]);
+    if (currentCoId === "") {
+      setCompanys([
+        ...companys,
+        {
+          id: crypto.randomUUID(),
+          companyName: coInfo.companyName,
+          positionTitle: coInfo.positionTitle,
+          companyStartDate: coInfo.companyStartDate,
+          companyEndDate: coInfo.companyEndDate,
+          companyLocation: coInfo.companyLocation,
+          mainResponsibs: coInfo.mainResponsibs,
+        },
+      ]);
+    } else {
+      const currentCo = Object.values(companys).find(
+        (item) => item.id === currentCoId,
+      );
+      currentCo.companyName = coInfo.companyName;
+      currentCo.positionTitle = coInfo.positionTitle;
+      currentCo.companyStartDate = coInfo.companyStartDate;
+      currentCo.companyEndDate = coInfo.companyEndDate;
+      currentCo.companyLocation = coInfo.companyLocation;
+      currentCo.mainResponsibs = coInfo.mainResponsibs;
+      setCurrentCoId("");
+    }
 
     resetExp();
-
     setAddExperienceVisibility(false);
   }
 
   if (!addExperienceVisiblity) {
     return (
-      <button
-        onClick={() => setAddExperienceVisibility(!addExperienceVisiblity)}
-      >
-        <IoMdAdd /> Experience
-      </button>
+      <>
+        <button
+          onClick={() => setAddExperienceVisibility(!addExperienceVisiblity)}
+        >
+          <IoMdAdd /> Experience
+        </button>
+
+        {companys.map((co) => {
+          return (
+            <div
+              onClick={() => {
+                setAddExperienceVisibility(!addExperienceVisiblity);
+                setCurrentCoId(co.id);
+                setCompanyName(co.companyName);
+                setPositionTitle(positionTitle),
+                  setMainResponsibs(mainResponsibs);
+                setCompanyStartDate(companyStartDate);
+                setCompanyEndDate(companyEndDate);
+                setCompanyLocation(companyLocation);
+              }}
+            >
+              <h3>{co.companyName}</h3>
+            </div>
+          );
+        })}
+      </>
+    );
+  } else {
+    return (
+      <AddExperience
+        companyName={companyName}
+        setCompanyName={setCompanyName}
+        positionTitle={positionTitle}
+        setPositionTitle={setPositionTitle}
+        companyStartDate={companyStartDate}
+        setCompanyStartDate={setCompanyStartDate}
+        companyEndDate={companyEndDate}
+        setCompanyEndDate={setCompanyEndDate}
+        companyLocation={companyLocation}
+        setCompanyLocation={setCompanyLocation}
+        mainResponsibs={mainResponsibs}
+        setMainResponsibs={setMainResponsibs}
+        updateCompanys={updateCompanys}
+        onReset={resetExp}
+        onCancel={handleCancelbtn}
+      />
     );
   }
-
-  return (
-    <AddExperience
-      companyName={companyName}
-      setCompanyName={setCompanyName}
-      positionTitle={positionTitle}
-      setPositionTitle={setPositionTitle}
-      companyStartDate={companyStartDate}
-      setCompanyStartDate={setCompanyStartDate}
-      companyEndDate={companyEndDate}
-      setCompanyEndDate={setCompanyEndDate}
-      companyLocation={companyLocation}
-      setCompanyLocation={setCompanyLocation}
-      mainResponsibs={mainResponsibs}
-      setMainResponsibs={setMainResponsibs}
-      updateCompanys={updateCompanys}
-      onReset={resetExp}
-      onCancel={handleCancelbtn}
-    />
-  );
 }
 
 // Move AddSchool component outside as well
@@ -383,6 +418,8 @@ function Education({
   setSchools,
   addSchoolVisiblity,
   setAddSchoolVisiblity,
+  currentScId,
+  setCurrentScId,
 }) {
   const [schoolName, setSchoolName] = useState("");
   const [degree, setDegree] = useState("");
@@ -404,30 +441,62 @@ function Education({
   }
 
   function updateSchools(schoolInfo) {
-    setSchools([
-      ...schools,
-      {
-        id: crypto.randomUUID(),
-        schoolName: schoolInfo.schoolName,
-        degree: schoolInfo.degree,
-        schoolStartDate: schoolInfo.schoolStartDate,
-        schoolEndDate: schoolInfo.schoolEndDate,
-        schoolLocation: schoolInfo.schoolLocation,
-      },
-    ]);
+    if (currentScId === "") {
+      setSchools([
+        ...schools,
+        {
+          id: crypto.randomUUID(),
+          schoolName: schoolInfo.schoolName,
+          degree: schoolInfo.degree,
+          schoolStartDate: schoolInfo.schoolStartDate,
+          schoolEndDate: schoolInfo.schoolEndDate,
+          schoolLocation: schoolInfo.schoolLocation,
+        },
+      ]);
+    } else {
+      const currentSc = Object.values(schools).find(
+        (item) => item.id === currentScId,
+      );
+      currentSc.id = schoolInfo.id;
+      currentSc.schoolName = schoolInfo.schoolName;
+      currentSc.degree = schoolInfo.degree;
+      currentSc.schoolStartDate = schoolInfo.schoolStartDate;
+      currentSc.schoolEndDate = schoolInfo.schoolEndDate;
+      currentSc.schoolLocation = schoolInfo.schoolLocation;
+      setCurrentScId("");
+    }
     resetSchool();
     setAddSchoolVisiblity(false);
   }
 
   if (!addSchoolVisiblity) {
     return (
-      <button
-        type="button"
-        onClick={() => setAddSchoolVisiblity(!addSchoolVisiblity)}
-      >
-        <IoMdAdd />
-        Education
-      </button>
+      <>
+        <button
+          type="button"
+          onClick={() => setAddSchoolVisiblity(!addSchoolVisiblity)}
+        >
+          <IoMdAdd />
+          Education
+        </button>
+        {schools.map((sc) => {
+          return (
+            <div
+              onClick={() => {
+                setAddSchoolVisiblity(!addSchoolVisiblity);
+                setCurrentScId(sc.id);
+                setSchoolName(sc.schoolName);
+                setDegree(sc.degree);
+                setSchoolStartDate(sc.schoolStartDate);
+                setSchoolEndDate(sc.schoolEndDate);
+                setSchoolLocation(sc.schoolLocation);
+              }}
+            >
+              <h3>{sc.schoolName}</h3>
+            </div>
+          );
+        })}
+      </>
     );
   }
 
@@ -497,10 +566,13 @@ export function Form({ setters }) {
   const [website, setWebsite] = useState("");
   const [tempCompanys, setTempCompanys] = useState([]);
   const [tempSchools, setTempSchools] = useState([]);
+  const [currentCoId, setCurrentCoId] = useState("");
+  const [currentScId, setCurrentScId] = useState("");
 
   const [foldExperience, setFoldExperience] = useState(false);
   const [foldEducation, setFoldEducation] = useState(false);
   const [addExperienceVisiblity, setAddExperienceVisibility] = useState(false);
+
   const [addSchoolVisiblity, setAddSchoolVisiblity] = useState(false);
 
   function handleSubmit(formData) {
@@ -518,8 +590,6 @@ export function Form({ setters }) {
     setAddress("");
     setWebsite("");
     setPhoneNumber("");
-    setTempCompanys([]);
-    setTempSchools([]);
   }
 
   function handleFoldExp() {
@@ -559,6 +629,8 @@ export function Form({ setters }) {
             setCompanys={setTempCompanys}
             addExperienceVisiblity={addExperienceVisiblity}
             setAddExperienceVisibility={setAddExperienceVisibility}
+            currentCoId={currentCoId}
+            setCurrentCoId={setCurrentCoId}
           />
         )}
       </div>
@@ -577,6 +649,8 @@ export function Form({ setters }) {
             setSchools={setTempSchools}
             addSchoolVisiblity={addSchoolVisiblity}
             setAddSchoolVisiblity={setAddSchoolVisiblity}
+            currentScId={currentScId}
+            setCurrentScId={setCurrentScId}
           />
         )}
       </div>

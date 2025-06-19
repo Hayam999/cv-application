@@ -20,4 +20,7 @@ wednesday, June 18, 2025 6:39
 [x] Add (cancel, save, Delete) btns functionality for Experience and Education;
 
 Thursday June 19, 2025
-[x] Update Resume Content
+[x] Update and Fix Resume Content
+[ ] Add Experiences and Eduactions in the Editing section
+| [ ]Add Section for each Experience after savingg
+[ ] Add Edit button to Resume
