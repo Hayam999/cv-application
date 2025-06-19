@@ -7,6 +7,88 @@ import { FaCheckCircle } from "react-icons/fa";
 import { FaGraduationCap } from "react-icons/fa6";
 import { BiSolidDownArrow } from "react-icons/bi";
 
+// Separated General component
+function General({
+  fullName,
+  setFullName,
+  email,
+  setEmail,
+  phoneNumber,
+  setPhoneNumber,
+  address,
+  setAddress,
+  website,
+  setWebsite,
+}) {
+  return (
+    <>
+      <h2>Personal Details</h2>
+      <div>
+        <label htmlFor="fullName">Full name</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="email">
+          Email
+          <span style={{ color: "gray", fontSize: "0.9em" }}> recommended</span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="user-name@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="phoneNumber">
+          Phone number{" "}
+          <span style={{ color: "gray", fontSize: ".9em" }}> recommended</span>
+        </label>
+        <input
+          type="tel"
+          id="phoneNumber"
+          name="phoneNumber"
+          placeholder="(555) 123-4567"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="address">
+          Address
+          <span style={{ color: "gray", fontSize: ".9em" }}> recommended</span>
+        </label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="website">Website</label>
+        <input
+          type="url"
+          id="website"
+          name="website"
+          placeholder="https://www.example.com"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
+        />
+      </div>
+    </>
+  );
+}
+
 // Move AddExperience component outside as well to prevent cursor loss
 function AddExperience({
   companyName,
@@ -127,7 +209,7 @@ function AddExperience({
 // Move Experience component outside of Form
 function Experience({
   companys,
-  setters,
+  setCompanys,
   addExperienceVisiblity,
   setAddExperienceVisibility,
 }) {
@@ -153,7 +235,7 @@ function Experience({
   }
 
   function updateCompanys(coInfo) {
-    setters.setCompanys([
+    setCompanys([
       ...companys,
       {
         id: crypto.randomUUID(),
@@ -279,13 +361,13 @@ function AddSchool({
         </button>
         <button
           onClick={() => {
-            updateSchools(
+            updateSchools({
               schoolName,
               degree,
               schoolStartDate,
               schoolEndDate,
               schoolLocation,
-            );
+            });
           }}
         >
           <FaCheckCircle /> Save
@@ -298,7 +380,7 @@ function AddSchool({
 // Move Education component outside of Form as well
 function Education({
   schools,
-  setters,
+  setSchools,
   addSchoolVisiblity,
   setAddSchoolVisiblity,
 }) {
@@ -322,7 +404,7 @@ function Education({
   }
 
   function updateSchools(schoolInfo) {
-    setters.setSchools([
+    setSchools([
       ...schools,
       {
         id: crypto.randomUUID(),
@@ -407,12 +489,14 @@ function GraduationInput({ schoolEndDate, setSchoolEndDate }) {
   );
 }
 
-export function Form({ setters, companys, schools }) {
+export function Form({ setters }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [website, setWebsite] = useState("");
+  const [tempCompanys, setTempCompanys] = useState([]);
+  const [tempSchools, setTempSchools] = useState([]);
 
   const [foldExperience, setFoldExperience] = useState(false);
   const [foldEducation, setFoldEducation] = useState(false);
@@ -425,6 +509,8 @@ export function Form({ setters, companys, schools }) {
     setters.setAddress(formData.get("address"));
     setters.setWebsite(formData.get("website"));
     setters.setPhoneNumber(formData.get("phoneNumber"));
+    setters.setCompanys(tempCompanys);
+    setters.setSchools(tempSchools);
 
     // Reset form input cells
     setFullName("");
@@ -432,85 +518,8 @@ export function Form({ setters, companys, schools }) {
     setAddress("");
     setWebsite("");
     setPhoneNumber("");
-  }
-
-  function General() {
-    return (
-      <>
-        <h2>Personal Details</h2>
-        <div>
-          <label htmlFor="fullName">Full name</label>
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">
-            Email
-            <span style={{ color: "gray", fontSize: "0.9em" }}>
-              {" "}
-              recommended
-            </span>
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="user-name@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="phoneNumber">
-            Phone number{" "}
-            <span style={{ color: "gray", fontSize: ".9em" }}>
-              {" "}
-              recommended
-            </span>
-          </label>
-          <input
-            type="tel"
-            id="phoneNumber"
-            name="phoneNumber"
-            placeholder="(555) 123-4567"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="address">
-            Address
-            <span style={{ color: "gray", fontSize: ".9em" }}>
-              {" "}
-              recommended
-            </span>
-          </label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="website">Website</label>
-          <input
-            type="url"
-            id="website"
-            name="website"
-            placeholder="https://www.example.com"
-            value={website}
-            onChange={(e) => setWebsite(e.target.value)}
-          />
-        </div>
-      </>
-    );
+    setTempCompanys([]);
+    setTempSchools([]);
   }
 
   function handleFoldExp() {
@@ -523,7 +532,18 @@ export function Form({ setters, companys, schools }) {
 
   return (
     <form action={handleSubmit}>
-      <General />
+      <General
+        fullName={fullName}
+        setFullName={setFullName}
+        email={email}
+        setEmail={setEmail}
+        phoneNumber={phoneNumber}
+        setPhoneNumber={setPhoneNumber}
+        address={address}
+        setAddress={setAddress}
+        website={website}
+        setWebsite={setWebsite}
+      />
       <div>
         <button type="button" onClick={handleFoldExp}>
           <div>
@@ -535,8 +555,8 @@ export function Form({ setters, companys, schools }) {
         </button>
         {foldExperience && (
           <Experience
-            companys={companys}
-            setters={setters}
+            companys={tempCompanys}
+            setCompanys={setTempCompanys}
             addExperienceVisiblity={addExperienceVisiblity}
             setAddExperienceVisibility={setAddExperienceVisibility}
           />
@@ -553,8 +573,8 @@ export function Form({ setters, companys, schools }) {
         </button>
         {foldEducation && (
           <Education
-            schools={schools}
-            setters={setters}
+            schools={tempSchools}
+            setSchools={setTempSchools}
             addSchoolVisiblity={addSchoolVisiblity}
             setAddSchoolVisiblity={setAddSchoolVisiblity}
           />

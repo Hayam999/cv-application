@@ -37,14 +37,6 @@ function App() {
     setWebsite,
     setSchools,
     setCompanys,
-    /* setSchoolName,
-    setDegree,
-    setCompanyName,
-    setPositionTitle,
-    setMainResponsibs,
-    setCompanyStartDate,
-    setCompanyEndDate,
-    setCompanyLocation, */
   };
 
   const resumeData = {
@@ -55,24 +47,11 @@ function App() {
     website,
     schools,
     companys,
-    /*schoolName,
-    degree,
-    companyName,
-    positionTitle,
-    mainResponsibs,
-    companyStartDate,
-    companyEndDate,
-    companyLocation,*/
   };
 
   return (
     <div className={styles.app}>
-      <Form
-        setters={setters}
-        resumeData={resumeData}
-        companys={companys}
-        schools={schools}
-      />
+      <Form setters={setters} />
       <Resume resumeData={resumeData} />
     </div>
   );

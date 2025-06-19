@@ -37,31 +37,12 @@ function Header({ fullName, email, phoneNumber, website }) {
 }
 
 // Separate Content Components
-function Profile() {
-  return (
-    <div>
-      <div>
-        {/* [ ]Add Profile icon */}
-        <h3>Profile</h3>
-      </div>
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
-          incidunt perspiciatis possimus alias corrupti unde quam culpa qui
-          tempora laborum, doloribus suscipit eos a, quisquam ab voluptate.
-          Nostrum, ratione quidem!
-        </p>
-      </div>
-    </div>
-  );
-}
 
 function Experience({ experiences }) {
   return (
     <div>
       <div>
-        {/*[ ] Add Experience icon */}
-        <h3>Experience</h3>
+        <h3>Professional Experience</h3>
       </div>
       {experiences && experiences.length > 0 ? (
         experiences.map((exp) => (
@@ -76,14 +57,7 @@ function Experience({ experiences }) {
           </div>
         ))
       ) : (
-        <div>
-          <h4>Senior Graphic Designer</h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-            reiciendis. Dolore error ipsum quos, doloremque neque iure
-            explicabo?{" "}
-          </p>
-        </div>
+        <div></div>
       )}
     </div>
   );
@@ -93,7 +67,7 @@ function Education({ schools }) {
   return (
     <div>
       <div>
-        <h3>{/*[ ] Add Education Icon */} Education</h3>
+        <h3>Education</h3>
       </div>
       {schools && schools.length > 0 ? (
         schools.map((school) => (
@@ -107,13 +81,7 @@ function Education({ schools }) {
           </div>
         ))
       ) : (
-        <div>
-          <h4>Bachelor of Fine Arts in Graphic Design</h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Perspiciatis ipsam, amet veritatis
-          </p>
-        </div>
+        <div></div>
       )}
     </div>
   );
@@ -122,7 +90,6 @@ function Education({ schools }) {
 function Content({ experiences, schools }) {
   return (
     <div className={styles.content}>
-      <Profile />
       <Experience experiences={experiences} />
       <Education schools={schools} />
     </div>
@@ -139,10 +106,7 @@ function Resume({ resumeData }) {
         phoneNumber={resumeData.phoneNumber}
         website={resumeData.website}
       />
-      <Content
-        experiences={resumeData.experiences}
-        schools={resumeData.schools}
-      />
+      <Content experiences={resumeData.companys} schools={resumeData.schools} />
     </div>
   );
 }

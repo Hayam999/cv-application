@@ -17,5 +17,7 @@ Sunday June 15, 2025
 
 wednesday, June 18, 2025 6:39
 [x] Add Education, Experience buttons functionality
-[ ] Add Experience and Education submission functionality
-[ ] Add (cancel, save, Delete) btns functionality for Experience and Education;
+[x] Add (cancel, save, Delete) btns functionality for Experience and Education;
+
+Thursday June 19, 2025
+[x] Update Resume Content
