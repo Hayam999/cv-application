@@ -67,7 +67,7 @@ function Education({ schools }) {
       </div>
       {schools && schools.length > 0 ? (
         schools.map((school) => (
-          <div key={school.id}>
+          <div>
             <h4>{school.degree}</h4>
             <h5>{school.schoolName}</h5>
             <p>

@@ -6,6 +6,7 @@ import { MdCancel } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaGraduationCap } from "react-icons/fa6";
 import { BiSolidDownArrow } from "react-icons/bi";
+import styles from "../styles/Form.module.css";
 
 // Separated General component
 function General({
@@ -432,6 +433,10 @@ function Education({
   const [schoolLocation, setSchoolLocation] = useState("");
 
   function resetSchool() {
+    if (currentScId !== "") {
+      setSchools(schools.filter((sc) => sc.id !== currentScId));
+      setCurrentScId("");
+    }
     setSchoolName("");
     setDegree("");
     setSchoolStartDate("");
@@ -440,7 +445,6 @@ function Education({
   }
 
   function handleCancelSchool() {
-    resetSchool();
     setAddSchoolVisiblity(false);
   }
 
@@ -590,6 +594,23 @@ export function Form({ setters, submittedData }) {
     setTempCompanys(submittedData.companys);
     setTempSchools(submittedData.schools);
   }
+  function clearResume() {
+    setters.setFullName("");
+    setters.setEmail("");
+    setters.setAddress("");
+    setters.setWebsite("");
+    setters.setPhoneNumber("");
+    setters.setCompanys([]);
+    setters.setSchools([]);
+
+    setFullName("");
+    setEmail("");
+    setAddress("");
+    setWebsite("");
+    setPhoneNumber("");
+    setTempCompanys([]);
+    setTempSchools([]);
+  }
 
   function handleSubmit(formData) {
     setters.setFullName(formData.get("fullName"));
@@ -612,7 +633,7 @@ export function Form({ setters, submittedData }) {
   }
 
   return (
-    <form action={handleSubmit}>
+    <form action={handleSubmit} className={styles.form}>
       <General
         fullName={fullName}
         setFullName={setFullName}
@@ -678,7 +699,5 @@ export function Form({ setters, submittedData }) {
     </form>
   );
 }
-
-function clearResume() {}
 
 export default Form;
