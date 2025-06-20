@@ -44,21 +44,17 @@ function Experience({ experiences }) {
       <div>
         <h3>Professional Experience</h3>
       </div>
-      {experiences && experiences.length > 0 ? (
-        experiences.map((exp) => (
-          <div key={exp.id}>
-            <h4>{exp.positionTitle}</h4>
-            <h5>{exp.companyName}</h5>
-            <p>
-              {exp.companyStartDate} - {exp.companyEndDate}
-            </p>
-            {exp.companyLocation && <p>{exp.companyLocation}</p>}
-            {exp.mainResponsibs && <p>{exp.mainResponsibs}</p>}
-          </div>
-        ))
-      ) : (
-        <div></div>
-      )}
+      {experiences.map((exp) => (
+        <div key={exp.id}>
+          <h4>{exp.positionTitle}</h4>
+          <h5>{exp.companyName}</h5>
+          <p>
+            {exp.companyStartDate} - {exp.companyEndDate}
+          </p>
+          {exp.companyLocation && <p>{exp.companyLocation}</p>}
+          {exp.mainResponsibs && <p>{exp.mainResponsibs}</p>}
+        </div>
+      ))}
     </div>
   );
 }

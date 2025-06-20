@@ -223,6 +223,10 @@ function Experience({
   const [companyLocation, setCompanyLocation] = useState("");
 
   function resetExp() {
+    if (currentCoId !== "") {
+      setCompanys(companys.filter((co) => co.id !== currentCoId));
+      setCurrentCoId("");
+    }
     setCompanyName("");
     setPositionTitle("");
     setCompanyStartDate("");
@@ -275,19 +279,19 @@ function Experience({
         >
           <IoMdAdd /> Experience
         </button>
-
         {companys.map((co) => {
           return (
             <div
+              key={co.id}
               onClick={() => {
                 setAddExperienceVisibility(!addExperienceVisiblity);
                 setCurrentCoId(co.id);
                 setCompanyName(co.companyName);
-                setPositionTitle(positionTitle),
-                  setMainResponsibs(mainResponsibs);
-                setCompanyStartDate(companyStartDate);
-                setCompanyEndDate(companyEndDate);
-                setCompanyLocation(companyLocation);
+                setPositionTitle(co.positionTitle);
+                setMainResponsibs(co.mainResponsibs);
+                setCompanyStartDate(co.companyStartDate);
+                setCompanyEndDate(co.companyEndDate);
+                setCompanyLocation(co.companyLocation);
               }}
             >
               <h3>{co.companyName}</h3>
@@ -558,7 +562,7 @@ function GraduationInput({ schoolEndDate, setSchoolEndDate }) {
   );
 }
 
-export function Form({ setters }) {
+export function Form({ setters, submittedData }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -568,12 +572,24 @@ export function Form({ setters }) {
   const [tempSchools, setTempSchools] = useState([]);
   const [currentCoId, setCurrentCoId] = useState("");
   const [currentScId, setCurrentScId] = useState("");
+  const [showEditBtn, setShowEditBtn] = useState(true);
 
   const [foldExperience, setFoldExperience] = useState(false);
   const [foldEducation, setFoldEducation] = useState(false);
   const [addExperienceVisiblity, setAddExperienceVisibility] = useState(false);
 
   const [addSchoolVisiblity, setAddSchoolVisiblity] = useState(false);
+
+  function editResume() {
+    setShowEditBtn(false);
+    setFullName(submittedData.fullName);
+    setEmail(submittedData.email);
+    setAddress(submittedData.address);
+    setWebsite(submittedData.website);
+    setPhoneNumber(submittedData.phoneNumber);
+    setTempCompanys(submittedData.companys);
+    setTempSchools(submittedData.schools);
+  }
 
   function handleSubmit(formData) {
     setters.setFullName(formData.get("fullName"));
@@ -584,12 +600,7 @@ export function Form({ setters }) {
     setters.setCompanys(tempCompanys);
     setters.setSchools(tempSchools);
 
-    // Reset form input cells
-    setFullName("");
-    setEmail("");
-    setAddress("");
-    setWebsite("");
-    setPhoneNumber("");
+    setShowEditBtn(true);
   }
 
   function handleFoldExp() {
@@ -655,17 +666,19 @@ export function Form({ setters }) {
         )}
       </div>
       <button type="submit">Submit</button>
-      <button type="button" onClick={editResume}>
-        Edit Resume
-      </button>
+
       <button type="button" onClick={clearResume}>
         Clear Resume
       </button>
+      {showEditBtn && (
+        <button type="button" onClick={editResume}>
+          Edit Resume
+        </button>
+      )}
     </form>
   );
 }
 
-function editResume() {}
 function clearResume() {}
 
 export default Form;

@@ -15,20 +15,6 @@ function App() {
   const [schools, setSchools] = useState([]);
   const [companys, setCompanys] = useState([]);
 
-  {
-    /* const [schoolName, setSchoolName] = useState("");
-  const [degree, setDegree] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [positionTitle, setPositionTitle] = useState("");
-  const [mainResponsibs, setMainResponsibs] = useState("");
-  const [companyStartDate, setCompanyStartDate] = useState("");
-  const [companyEndDate, setCompanyEndDate] = useState("");
-  const [companyLocation, setCompanyLocation] = useState("");
-  {
-    /*
-  const [startDate, setStartDate] = useState("");
-/*const [location, setLocation] = useState("");*/
-  }
   const setters = {
     setFullName,
     setEmail,
@@ -51,7 +37,7 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <Form setters={setters} />
+      <Form setters={setters} submittedData={resumeData} />
       <Resume resumeData={resumeData} />
     </div>
   );
