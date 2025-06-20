@@ -21,6 +21,8 @@ wednesday, June 18, 2025 6:39
 
 Thursday June 19, 2025
 [x] Update and Fix Resume Content
-[ ] Add Experiences and Eduactions in the Editing section
-| [ ]Add Section for each Experience after savingg
+[x] feat(Experience, Education): Add sections for new elements with editing funcitonality
+
+Friday June 20, 2025
 [ ] Add Edit button to Resume
+[ ] Add clear Resume button

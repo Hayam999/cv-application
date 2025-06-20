@@ -655,8 +655,17 @@ export function Form({ setters }) {
         )}
       </div>
       <button type="submit">Submit</button>
+      <button type="button" onClick={editResume}>
+        Edit Resume
+      </button>
+      <button type="button" onClick={clearResume}>
+        Clear Resume
+      </button>
     </form>
   );
 }
+
+function editResume() {}
+function clearResume() {}
 
 export default Form;
