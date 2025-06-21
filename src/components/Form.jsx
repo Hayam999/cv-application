@@ -78,7 +78,7 @@ function General({
       <div>
         <label htmlFor="website">Website</label>
         <input
-          type="url"
+          type="text"
           id="website"
           name="website"
           placeholder="https://www.example.com"
@@ -453,6 +453,7 @@ function Education({
       setSchools([
         ...schools,
         {
+          resumeId: crypto.randomUUID(),
           id: crypto.randomUUID(),
           schoolName: schoolInfo.schoolName,
           degree: schoolInfo.degree,
@@ -466,6 +467,7 @@ function Education({
         (item) => item.id === currentScId,
       );
       currentSc.id = schoolInfo.id;
+      currentSc.resumeId = schoolInfo.resumeId;
       currentSc.schoolName = schoolInfo.schoolName;
       currentSc.degree = schoolInfo.degree;
       currentSc.schoolStartDate = schoolInfo.schoolStartDate;
@@ -490,6 +492,7 @@ function Education({
         {schools.map((sc) => {
           return (
             <div
+              key={sc.id}
               onClick={() => {
                 setAddSchoolVisiblity(!addSchoolVisiblity);
                 setCurrentScId(sc.id);
@@ -632,71 +635,137 @@ export function Form({ setters, submittedData }) {
     setFoldEducation(!foldEducation);
   }
 
-  return (
-    <form action={handleSubmit} className={styles.form}>
-      <General
-        fullName={fullName}
-        setFullName={setFullName}
-        email={email}
-        setEmail={setEmail}
-        phoneNumber={phoneNumber}
-        setPhoneNumber={setPhoneNumber}
-        address={address}
-        setAddress={setAddress}
-        website={website}
-        setWebsite={setWebsite}
-      />
-      <div>
-        <button type="button" onClick={handleFoldExp}>
-          <div>
-            <h2>
-              <MdWork /> Experiences
-            </h2>
-            <BiSolidDownArrow />
-          </div>
-        </button>
-        {foldExperience && (
-          <Experience
-            companys={tempCompanys}
-            setCompanys={setTempCompanys}
-            addExperienceVisiblity={addExperienceVisiblity}
-            setAddExperienceVisibility={setAddExperienceVisibility}
-            currentCoId={currentCoId}
-            setCurrentCoId={setCurrentCoId}
-          />
-        )}
-      </div>
-      <div>
-        <button type="button" onClick={handleFoldEdu}>
-          <div>
-            <h2>
-              <FaGraduationCap /> Education
-            </h2>
-            <BiSolidDownArrow />
-          </div>
-        </button>
-        {foldEducation && (
-          <Education
-            schools={tempSchools}
-            setSchools={setTempSchools}
-            addSchoolVisiblity={addSchoolVisiblity}
-            setAddSchoolVisiblity={setAddSchoolVisiblity}
-            currentScId={currentScId}
-            setCurrentScId={setCurrentScId}
-          />
-        )}
-      </div>
-      <button type="submit">Submit</button>
+  // Sample tempCompanys array with 2 fake experiences
+  const sampleCompanys = [
+    {
+      id: crypto.randomUUID(),
+      companyName: "Tech Solutions Inc",
+      positionTitle: "Senior Software Developer",
+      companyStartDate: "2022-01-15",
+      companyEndDate: "2024-08-30",
+      companyLocation: "Cairo, Egypt",
+      mainResponsibs:
+        "Developed and maintained web applications using React and Node.js. Led a team of 3 junior developers and collaborated with cross-functional teams to deliver high-quality software solutions. Implemented automated testing procedures that reduced bug reports by 40%.",
+    },
+    {
+      id: crypto.randomUUID(),
+      companyName: "Digital Marketing Agency",
+      positionTitle: "Frontend Developer",
+      companyStartDate: "2020-06-01",
+      companyEndDate: "2021-12-31",
+      companyLocation: "Giza, Egypt",
+      mainResponsibs:
+        "Created responsive web interfaces for client websites using HTML, CSS, and JavaScript. Worked closely with designers to implement pixel-perfect designs and ensured cross-browser compatibility. Optimized website performance resulting in 25% faster load times.",
+    },
+  ];
 
-      <button type="button" onClick={clearResume}>
-        Clear Resume
-      </button>
-      {showEditBtn && (
-        <button type="button" onClick={editResume}>
-          Edit Resume
-        </button>
-      )}
-    </form>
+  // Sample tempSchools array with 2 fake educations
+  const sampleSchools = [
+    {
+      resumeId: crypto.randomUUID(),
+      id: crypto.randomUUID(),
+      schoolName: "Cairo University",
+      degree: "Bachelor's Degree in Computer Science",
+      schoolStartDate: "2016-09-01",
+      schoolEndDate: 2020,
+      schoolLocation: "Cairo, Egypt",
+    },
+    {
+      resumeId: crypto.randomUUID(),
+      id: crypto.randomUUID(),
+      schoolName: "American University in Cairo",
+      degree: "Diploma in Web Development",
+      schoolStartDate: "2019-01-15",
+      schoolEndDate: 2019,
+      schoolLocation: "New Cairo, Egypt",
+    },
+  ];
+
+  // Updated loadExample function
+  function loadExample() {
+    setters.setFullName("Hayam Kamal");
+    setters.setEmail("hayammhmd90@gmail.com");
+    setters.setAddress("Giza, Egypt");
+    setters.setWebsite("www.example.com");
+    setters.setPhoneNumber("+201050879165");
+    setters.setCompanys(sampleCompanys);
+    setters.setSchools(sampleSchools);
+
+    setFullName("Hayam Kamal");
+    setEmail("hayammhmd90@gmail.com");
+    setAddress("Giza, Egypt");
+    setWebsite("www.example.com");
+    setPhoneNumber("+201050879165");
+    setTempCompanys(sampleCompanys);
+    setTempSchools(sampleSchools);
+  }
+
+  return (
+    <div className={styles.form}>
+      <button onClick={loadExample}>Load Example</button>
+      <button onClick={clearResume}>Clear Resume</button>
+      <form action={handleSubmit}>
+        <General
+          fullName={fullName}
+          setFullName={setFullName}
+          email={email}
+          setEmail={setEmail}
+          phoneNumber={phoneNumber}
+          setPhoneNumber={setPhoneNumber}
+          address={address}
+          setAddress={setAddress}
+          website={website}
+          setWebsite={setWebsite}
+        />
+        <div>
+          <button type="button" onClick={handleFoldExp}>
+            <div>
+              <h2>
+                <MdWork /> Experiences
+              </h2>
+              <BiSolidDownArrow />
+            </div>
+          </button>
+          {foldExperience && (
+            <Experience
+              companys={tempCompanys}
+              setCompanys={setTempCompanys}
+              addExperienceVisiblity={addExperienceVisiblity}
+              setAddExperienceVisibility={setAddExperienceVisibility}
+              currentCoId={currentCoId}
+              setCurrentCoId={setCurrentCoId}
+            />
+          )}
+        </div>
+        <div>
+          <button type="button" onClick={handleFoldEdu}>
+            <div>
+              <h2>
+                <FaGraduationCap /> Education
+              </h2>
+              <BiSolidDownArrow />
+            </div>
+          </button>
+          {foldEducation && (
+            <Education
+              schools={tempSchools}
+              setSchools={setTempSchools}
+              addSchoolVisiblity={addSchoolVisiblity}
+              setAddSchoolVisiblity={setAddSchoolVisiblity}
+              currentScId={currentScId}
+              setCurrentScId={setCurrentScId}
+            />
+          )}
+        </div>
+        <button type="submit">Submit</button>
+
+        {showEditBtn && (
+          <button type="button" onClick={editResume}>
+            Edit Resume
+          </button>
+        )}
+      </form>
+    </div>
   );
 }
 

@@ -24,5 +24,9 @@ Thursday June 19, 2025
 [x] feat(Experience, Education): Add sections for new elements with editing funcitonality
 
 Friday June 20, 2025
-[ ] Add Edit button to Resume
-[ ] Add clear Resume button
+[x] Add Edit button to Resume
+
+[x] Add clear Resume button
+
+Saturday, June 21, 2025
+[ ] Fix school rendering

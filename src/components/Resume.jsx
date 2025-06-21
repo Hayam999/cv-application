@@ -65,20 +65,16 @@ function Education({ schools }) {
       <div>
         <h3>Education</h3>
       </div>
-      {schools && schools.length > 0 ? (
-        schools.map((school) => (
-          <div>
-            <h4>{school.degree}</h4>
-            <h5>{school.schoolName}</h5>
-            <p>
-              {school.schoolStartDate} - {school.schoolEndDate}
-            </p>
-            {school.schoolLocation && <p>{school.schoolLocation}</p>}
-          </div>
-        ))
-      ) : (
-        <div></div>
-      )}
+      {schools.map((school) => (
+        <div key={school.resumeId}>
+          <h4>{school.degree}</h4>
+          <h5>{school.schoolName}</h5>
+          <p>
+            {school.schoolStartDate} - {school.schoolEndDate}
+          </p>
+          {school.schoolLocation && <p>{school.schoolLocation}</p>}
+        </div>
+      ))}
     </div>
   );
 }
