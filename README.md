@@ -1,3 +1,28 @@
+# CV Builder
+
+## Demo
+
+You can view a live demo of the CV Builder [here](https://cv-application-amber-ten.vercel.app/).
+
+## Desktop view
+
+<p align="center" style="margin-bottom:64px;">
+<img src="./src/images/desktop-view.png">
+<br>
+ </p>
+
+ <br>
+
+## Mobile view
+
+   <p align="center" style="margin-bottom:64px;">
+   <img src="./src/images/mobile-view.png"
+   alt="mobile view of project">
+   <br>
+    </p>
+
+<br>
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

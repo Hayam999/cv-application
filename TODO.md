@@ -33,4 +33,4 @@ Saturday, June 21, 2025
 
 Sunday, June 22, 2025
 [x] Add styles to schools and Experiences in the form
-[ ] Add styles to Resume
+[x] Add styles to Resume
