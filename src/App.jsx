@@ -14,6 +14,7 @@ function App() {
   const [website, setWebsite] = useState("");
   const [schools, setSchools] = useState([]);
   const [companys, setCompanys] = useState([]);
+  const [loadExample, setLoadExample] = useState(true);
 
   const setters = {
     setFullName,
@@ -37,7 +38,12 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <Form setters={setters} submittedData={resumeData} />
+      <Form
+        setters={setters}
+        submittedData={resumeData}
+        useExample={loadExample}
+        setUseExample={setLoadExample}
+      />
       <Resume resumeData={resumeData} />
     </div>
   );

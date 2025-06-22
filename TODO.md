@@ -31,5 +31,6 @@ Friday June 20, 2025
 Saturday, June 21, 2025
 [X] Add initial Styling to Form
 
-[ ] Add styles to schools and Experiences in the form
-[ ] fix icons after loading the example
+Sunday, June 22, 2025
+[x] Add styles to schools and Experiences in the form
+[ ] Add styles to Resume

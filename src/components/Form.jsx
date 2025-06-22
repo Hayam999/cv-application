@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { MdWork } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
@@ -6,6 +6,7 @@ import { MdCancel } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaGraduationCap } from "react-icons/fa6";
 import { BiSolidDownArrow } from "react-icons/bi";
+
 import styles from "../styles/Form.module.css";
 
 // Separated General component
@@ -628,6 +629,7 @@ export function Form({ setters, submittedData }) {
   const [currentCoId, setCurrentCoId] = useState("");
   const [currentScId, setCurrentScId] = useState("");
   const [showEditBtn, setShowEditBtn] = useState(true);
+  const [hasLoadedInitialExample, setHasLoadedInitialExample] = useState(false);
 
   const [foldExperience, setFoldExperience] = useState(false);
   const [foldEducation, setFoldEducation] = useState(false);
@@ -635,6 +637,78 @@ export function Form({ setters, submittedData }) {
   const [addSchoolVisiblity, setAddSchoolVisiblity] = useState(false);
   const [edArrRotated, setEdArrRotated] = useState(false);
   const [exArrRotated, setExArrRotated] = useState(false);
+
+  const sampleCompanys = useMemo(
+    () => [
+      {
+        id: crypto.randomUUID(),
+        companyName: "Tech Solutions Inc",
+        positionTitle: "Senior Software Developer",
+        companyStartDate: "2022-01-15",
+        companyEndDate: "2024-08-30",
+        companyLocation: "Cairo, Egypt",
+        mainResponsibs:
+          "Developed and maintained web applications using React and Node.js. Led a team of 3 junior developers and collaborated with cross-functional teams to deliver high-quality software solutions. Implemented automated testing procedures that reduced bug reports by 40%.",
+      },
+      {
+        id: crypto.randomUUID(),
+        companyName: "Digital Marketing Agency",
+        positionTitle: "Frontend Developer",
+        companyStartDate: "2020-06-01",
+        companyEndDate: "2021-12-31",
+        companyLocation: "Giza, Egypt",
+        mainResponsibs:
+          "Created responsive web interfaces for client websites using HTML, CSS, and JavaScript. Worked closely with designers to implement pixel-perfect designs and ensured cross-browser compatibility. Optimized website performance resulting in 25% faster load times.",
+      },
+    ],
+    [],
+  );
+
+  const sampleSchools = useMemo(
+    () => [
+      {
+        resumeId: crypto.randomUUID(),
+        id: crypto.randomUUID(),
+        schoolName: "Cairo University",
+        degree: "Bachelor's Degree in Computer Science",
+        schoolStartDate: "2016-09-01",
+        schoolEndDate: 2020,
+        schoolLocation: "Cairo, Egypt",
+      },
+      {
+        resumeId: crypto.randomUUID(),
+        id: crypto.randomUUID(),
+        schoolName: "American University in Cairo",
+        degree: "Diploma in Web Development",
+        schoolStartDate: "2019-01-15",
+        schoolEndDate: 2019,
+        schoolLocation: "New Cairo, Egypt",
+      },
+    ],
+    [],
+  );
+
+  useEffect(() => {
+    if (!hasLoadedInitialExample) {
+      setters.setFullName("Hayam Kamal");
+      setters.setEmail("hayammhmd90@gmail.com");
+      setters.setAddress("Giza, Egypt");
+      setters.setWebsite("www.example.com");
+      setters.setPhoneNumber("+201050879165");
+      setters.setCompanys(sampleCompanys);
+      setters.setSchools(sampleSchools);
+
+      setFullName("Hayam Kamal");
+      setEmail("hayammhmd90@gmail.com");
+      setAddress("Giza, Egypt");
+      setWebsite("www.example.com");
+      setPhoneNumber("+201050879165");
+      setTempCompanys(sampleCompanys);
+      setTempSchools(sampleSchools);
+
+      setHasLoadedInitialExample(true);
+    }
+  }, [hasLoadedInitialExample, setters, sampleSchools, sampleCompanys]);
 
   function editResume() {
     setShowEditBtn(false);
@@ -646,6 +720,7 @@ export function Form({ setters, submittedData }) {
     setTempCompanys(submittedData.companys);
     setTempSchools(submittedData.schools);
   }
+
   function clearResume() {
     setters.setFullName("");
     setters.setEmail("");
@@ -685,53 +760,7 @@ export function Form({ setters, submittedData }) {
     setFoldEducation(!foldEducation);
   }
 
-  // Sample tempCompanys array with 2 fake experiences
-  const sampleCompanys = [
-    {
-      id: crypto.randomUUID(),
-      companyName: "Tech Solutions Inc",
-      positionTitle: "Senior Software Developer",
-      companyStartDate: "2022-01-15",
-      companyEndDate: "2024-08-30",
-      companyLocation: "Cairo, Egypt",
-      mainResponsibs:
-        "Developed and maintained web applications using React and Node.js. Led a team of 3 junior developers and collaborated with cross-functional teams to deliver high-quality software solutions. Implemented automated testing procedures that reduced bug reports by 40%.",
-    },
-    {
-      id: crypto.randomUUID(),
-      companyName: "Digital Marketing Agency",
-      positionTitle: "Frontend Developer",
-      companyStartDate: "2020-06-01",
-      companyEndDate: "2021-12-31",
-      companyLocation: "Giza, Egypt",
-      mainResponsibs:
-        "Created responsive web interfaces for client websites using HTML, CSS, and JavaScript. Worked closely with designers to implement pixel-perfect designs and ensured cross-browser compatibility. Optimized website performance resulting in 25% faster load times.",
-    },
-  ];
-
-  // Sample tempSchools array with 2 fake educations
-  const sampleSchools = [
-    {
-      resumeId: crypto.randomUUID(),
-      id: crypto.randomUUID(),
-      schoolName: "Cairo University",
-      degree: "Bachelor's Degree in Computer Science",
-      schoolStartDate: "2016-09-01",
-      schoolEndDate: 2020,
-      schoolLocation: "Cairo, Egypt",
-    },
-    {
-      resumeId: crypto.randomUUID(),
-      id: crypto.randomUUID(),
-      schoolName: "American University in Cairo",
-      degree: "Diploma in Web Development",
-      schoolStartDate: "2019-01-15",
-      schoolEndDate: 2019,
-      schoolLocation: "New Cairo, Egypt",
-    },
-  ];
-
-  // Updated loadExample function
+  // Updated loadExample function - now manually callable
   function loadExample() {
     setters.setFullName("Hayam Kamal");
     setters.setEmail("hayammhmd90@gmail.com");

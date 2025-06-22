@@ -3,11 +3,16 @@ import styles from "../styles/Resume.module.css";
 function Contact({ email, phoneNumber, website }) {
   return (
     <>
-      <div>
+      <div
+        style={{
+          marginBottom: ".75em",
+          textAlign: "left",
+        }}
+      >
         {/* [ ] ADD Phone Icon */}
-        <h3>Contact</h3>
+        <h2>Contact</h2>
       </div>
-      <div>
+      <div className={styles.contactInfo}>
         <div>
           <h5>Email</h5>
           <p>{email}</p>
@@ -28,7 +33,7 @@ function Contact({ email, phoneNumber, website }) {
 function Header({ fullName, email, phoneNumber, website }) {
   return (
     <div className={styles.header}>
-      <div>
+      <div className={styles.name}>
         <h1>{fullName}</h1>
       </div>
       <Contact email={email} phoneNumber={phoneNumber} website={website} />
@@ -40,14 +45,14 @@ function Header({ fullName, email, phoneNumber, website }) {
 
 function Experience({ experiences }) {
   return (
-    <div>
-      <div>
-        <h3>Professional Experience</h3>
+    <div className={styles.experiences}>
+      <div className={styles.eHead}>
+        <h1>Professional Experience</h1>
       </div>
       {experiences.map((exp) => (
-        <div key={exp.id}>
-          <h4>{exp.positionTitle}</h4>
-          <h5>{exp.companyName}</h5>
+        <div className={styles.eUnit} key={exp.id}>
+          <h2>{exp.positionTitle}</h2>
+          <h3>{exp.companyName}</h3>
           <p>
             {exp.companyStartDate} - {exp.companyEndDate}
           </p>
@@ -61,14 +66,14 @@ function Experience({ experiences }) {
 
 function Education({ schools }) {
   return (
-    <div>
-      <div>
-        <h3>Education</h3>
+    <div className={styles.educations}>
+      <div className={styles.eHead}>
+        <h1>Education</h1>
       </div>
       {schools.map((school) => (
-        <div key={school.resumeId}>
-          <h4>{school.degree}</h4>
-          <h5>{school.schoolName}</h5>
+        <div className={styles.eUnit} key={school.resumeId}>
+          <h2>{school.degree}</h2>
+          <h3>{school.schoolName}</h3>
           <p>
             {school.schoolStartDate} - {school.schoolEndDate}
           </p>
@@ -97,6 +102,7 @@ function Resume({ resumeData }) {
         email={resumeData.email}
         phoneNumber={resumeData.phoneNumber}
         website={resumeData.website}
+        className={styles.header}
       />
       <Content experiences={resumeData.companys} schools={resumeData.schools} />
     </div>

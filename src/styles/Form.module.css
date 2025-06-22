@@ -1,11 +1,13 @@
 .formDev {
-  margin-bottom: 5vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  background-color: black;
+  color: #fff;
+  min-width: 30%;
 }
 
-@media (max-width: 1200px) {
-  .formDev {
-    min-width: 100vw;
-  }
+h1 {
+  font-size: 1.9rem;
 }
 
 .twoBtns {
@@ -55,7 +57,7 @@
   align-self: center;
   transition: transform 0.8s ease;
   transform: rotate(0deg);
-  overflow: visible;
+  overflow: hidden;
 }
 
 .rotated {
@@ -75,7 +77,6 @@
   position: relative;
   left: 0;
   gap: 0.3em;
-  overflow: visible;
 }
 
 .threeBtns {

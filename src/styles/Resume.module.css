@@ -1,19 +1,55 @@
 .resume {
   display: flex;
-  min-width: 60%;
-  justify-self: left;
+  flex-direction: column;
+  width: 70%;
 }
 
 .header {
   display: flex;
   flex-direction: column;
-  min-width: 30%;
-  max-width: 35%;
+  border: none;
+  border-left: 3px solid hsl(0, 0%, 70%);
+  border-right: 3px solid hsl(0, 0%, 70%);
+  border-bottom: 3px solid hsl(0, 0%, 70%);
+  padding-left: 2em;
+  padding-top: 4vh;
 }
 
 .content {
   display: flex;
   flex-direction: column;
   text-align: center;
-  min-width: 55%;
+  padding-top: 4vh;
+
+  border-bottom: 3px solid hsl(0, 0%, 70%);
+}
+
+.name {
+  text-align: center;
+  font-size: 4rem;
+}
+
+.contactInfo {
+  display: flex;
+  justify-content: flex-start;
+  gap: 5vh;
+  padding-bottom: 1rem;
+}
+
+.contactInfo h5 {
+  text-align: left;
+}
+
+.eHead {
+  margin-bottom: 2em;
+}
+
+.educations,
+.experiences {
+  padding: 0 1em 1em 1em;
+  margin-bottom: 3vh;
+}
+
+.eUnit {
+  padding: 1em 0 1em 0;
 }
