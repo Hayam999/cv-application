@@ -299,7 +299,30 @@ function Experience({
 
   if (!addExperienceVisiblity) {
     return (
-      <fragment style={{ display: "flex", justifyContent: "flex-start" }}>
+      <fragment className={styles.eInner}>
+        <div className={styles.eWrapper}>
+          {" "}
+          {companys.map((co) => {
+            return (
+              <div
+                className={styles.eSection}
+                key={co.id}
+                onClick={() => {
+                  setAddExperienceVisibility(!addExperienceVisiblity);
+                  setCurrentCoId(co.id);
+                  setCompanyName(co.companyName);
+                  setPositionTitle(co.positionTitle);
+                  setMainResponsibs(co.mainResponsibs);
+                  setCompanyStartDate(co.companyStartDate);
+                  setCompanyEndDate(co.companyEndDate);
+                  setCompanyLocation(co.companyLocation);
+                }}
+              >
+                <h3>{co.companyName}</h3>
+              </div>
+            );
+          })}
+        </div>
         <button
           onClick={() => setAddExperienceVisibility(!addExperienceVisiblity)}
         >
@@ -307,25 +330,6 @@ function Experience({
             <IoMdAdd style={{ display: "inline-block" }} /> Experience
           </span>
         </button>
-        {companys.map((co) => {
-          return (
-            <div
-              key={co.id}
-              onClick={() => {
-                setAddExperienceVisibility(!addExperienceVisiblity);
-                setCurrentCoId(co.id);
-                setCompanyName(co.companyName);
-                setPositionTitle(co.positionTitle);
-                setMainResponsibs(co.mainResponsibs);
-                setCompanyStartDate(co.companyStartDate);
-                setCompanyEndDate(co.companyEndDate);
-                setCompanyLocation(co.companyLocation);
-              }}
-            >
-              <h3>{co.companyName}</h3>
-            </div>
-          );
-        })}
       </fragment>
     );
   } else {
@@ -519,7 +523,28 @@ function Education({
 
   if (!addSchoolVisiblity) {
     return (
-      <fragment style={{ display: "flex", justifyContent: "flex-start" }}>
+      <fragment className={styles.eInner}>
+        <div className={styles.eWrapper}>
+          {schools.map((sc) => {
+            return (
+              <div
+                className={styles.eSection}
+                key={sc.id}
+                onClick={() => {
+                  setAddSchoolVisiblity(!addSchoolVisiblity);
+                  setCurrentScId(sc.id);
+                  setSchoolName(sc.schoolName);
+                  setDegree(sc.degree);
+                  setSchoolStartDate(sc.schoolStartDate);
+                  setSchoolEndDate(sc.schoolEndDate);
+                  setSchoolLocation(sc.schoolLocation);
+                }}
+              >
+                <h3>{sc.schoolName}</h3>
+              </div>
+            );
+          })}
+        </div>
         <button
           type="button"
           onClick={() => setAddSchoolVisiblity(!addSchoolVisiblity)}
@@ -529,24 +554,6 @@ function Education({
             Education
           </span>
         </button>
-        {schools.map((sc) => {
-          return (
-            <div
-              key={sc.id}
-              onClick={() => {
-                setAddSchoolVisiblity(!addSchoolVisiblity);
-                setCurrentScId(sc.id);
-                setSchoolName(sc.schoolName);
-                setDegree(sc.degree);
-                setSchoolStartDate(sc.schoolStartDate);
-                setSchoolEndDate(sc.schoolEndDate);
-                setSchoolLocation(sc.schoolLocation);
-              }}
-            >
-              <h3>{sc.schoolName}</h3>
-            </div>
-          );
-        })}
       </fragment>
     );
   }

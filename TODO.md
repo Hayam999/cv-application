@@ -29,4 +29,7 @@ Friday June 20, 2025
 [x] Add clear Resume button
 
 Saturday, June 21, 2025
-[ ] Fix school rendering
+[X] Add initial Styling to Form
+
+[ ] Add styles to schools and Experiences in the form
+[ ] fix icons after loading the example

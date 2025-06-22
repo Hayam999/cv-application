@@ -118,3 +118,20 @@
 .dateInput {
   appearance: none; /* Removes default styling in some browsers */
 }
+
+.eSection {
+  padding: 1em;
+  cursor: pointer;
+}
+
+.eWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5vh;
+}
+
+eInner {
+  display: "flex";
+
+  flex-direction: column;
+}
