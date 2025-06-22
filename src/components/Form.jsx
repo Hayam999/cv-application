@@ -1,10 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
-import { MdWork } from "react-icons/md";
+
 import { IoMdAdd } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 import { MdCancel } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
-import { FaGraduationCap } from "react-icons/fa6";
+
 import { BiSolidDownArrow } from "react-icons/bi";
 
 import styles from "../styles/Form.module.css";
@@ -798,9 +798,7 @@ export function Form({ setters, submittedData }) {
         <div>
           <div className={styles.clickableArea} onClick={handleFoldExp}>
             <h1>
-              <span className={styles.iconAlign}>
-                <MdWork style={{ display: "inline-block" }} /> Experiences
-              </span>
+              <span className={styles.iconAlign}>Experiences</span>
             </h1>
             <BiSolidDownArrow
               className={`${styles.arrow} ${exArrRotated ? styles.rotated : ""}`}
@@ -825,14 +823,7 @@ export function Form({ setters, submittedData }) {
             }}
           >
             <h1>
-              <span className={styles.iconAlign}>
-                <FaGraduationCap
-                  style={{
-                    display: "inline-block",
-                  }}
-                />{" "}
-                Education
-              </span>
+              <span className={styles.iconAlign}> Education</span>
             </h1>
             <BiSolidDownArrow
               className={`${styles.arrow} ${edArrRotated ? styles.rotated : ""}`}
