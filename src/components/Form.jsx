@@ -795,68 +795,72 @@ export function Form({ setters, submittedData }) {
           setWebsite={setWebsite}
           className={styles.general}
         />
-        <div>
-          <div className={styles.clickableArea} onClick={handleFoldExp}>
-            <h1>
-              <span className={styles.iconAlign}>Experiences</span>
-            </h1>
-            <BiSolidDownArrow
-              className={`${styles.arrow} ${exArrRotated ? styles.rotated : ""}`}
-            />
+        <div className={styles.eWrapper}>
+          <div>
+            <div className={styles.clickableArea} onClick={handleFoldExp}>
+              <h1>
+                <span className={styles.iconAlign}>Experiences</span>
+              </h1>
+              <BiSolidDownArrow
+                className={`${styles.arrow} ${exArrRotated ? styles.rotated : ""}`}
+              />
+            </div>
+            {foldExperience && (
+              <Experience
+                companys={tempCompanys}
+                setCompanys={setTempCompanys}
+                addExperienceVisiblity={addExperienceVisiblity}
+                setAddExperienceVisibility={setAddExperienceVisibility}
+                currentCoId={currentCoId}
+                setCurrentCoId={setCurrentCoId}
+              />
+            )}
           </div>
-          {foldExperience && (
-            <Experience
-              companys={tempCompanys}
-              setCompanys={setTempCompanys}
-              addExperienceVisiblity={addExperienceVisiblity}
-              setAddExperienceVisibility={setAddExperienceVisibility}
-              currentCoId={currentCoId}
-              setCurrentCoId={setCurrentCoId}
-            />
-          )}
-        </div>
-        <div>
-          <div
-            className={styles.clickableArea}
-            onClick={() => {
-              handleFoldEdu();
-            }}
-          >
-            <h1>
-              <span className={styles.iconAlign}> Education</span>
-            </h1>
-            <BiSolidDownArrow
-              className={`${styles.arrow} ${edArrRotated ? styles.rotated : ""}`}
-            />
+          <div>
+            <div
+              className={styles.clickableArea}
+              onClick={() => {
+                handleFoldEdu();
+              }}
+            >
+              <h1>
+                <span className={styles.iconAlign}> Education</span>
+              </h1>
+              <BiSolidDownArrow
+                className={`${styles.arrow} ${edArrRotated ? styles.rotated : ""}`}
+              />
+            </div>
+            {foldEducation && (
+              <Education
+                schools={tempSchools}
+                setSchools={setTempSchools}
+                addSchoolVisiblity={addSchoolVisiblity}
+                setAddSchoolVisiblity={setAddSchoolVisiblity}
+                currentScId={currentScId}
+                setCurrentScId={setCurrentScId}
+              />
+            )}
           </div>
-          {foldEducation && (
-            <Education
-              schools={tempSchools}
-              setSchools={setTempSchools}
-              addSchoolVisiblity={addSchoolVisiblity}
-              setAddSchoolVisiblity={setAddSchoolVisiblity}
-              currentScId={currentScId}
-              setCurrentScId={setCurrentScId}
-            />
-          )}
         </div>
-        <div className={`${styles.twoBtns} ${styles.addTopSpace}`}>
-          <button type="submit">Submit</button>
+        <div className={styles.fourBtnsWrapper}>
+          <div className={styles.twoBtns}>
+            <button type="submit">Submit</button>
 
-          {showEditBtn && (
-            <button type="button" onClick={editResume}>
-              Edit Resume
+            {showEditBtn && (
+              <button type="button" onClick={editResume}>
+                Edit Resume
+              </button>
+            )}
+          </div>
+
+          <div className={styles.twoBtns}>
+            <button type="button" onClick={loadExample}>
+              Load Example
             </button>
-          )}
-        </div>
-
-        <div className={styles.twoBtns}>
-          <button type="button" onClick={loadExample}>
-            Load Example
-          </button>
-          <button type="button" onClick={clearResume}>
-            Clear Resume
-          </button>
+            <button type="button" onClick={clearResume}>
+              Clear Resume
+            </button>
+          </div>
         </div>
       </form>
     </div>

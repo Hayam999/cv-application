@@ -4,12 +4,17 @@
   width: 75%;
 }
 
+@media (max-width: 950px) {
+  .resume {
+    width: 100%;
+  }
+}
+
 .header {
   display: flex;
   flex-direction: column;
   border: none;
-  border-left: 3px solid hsl(0, 0%, 70%);
-  border-right: 3px solid hsl(0, 0%, 70%);
+
   border-bottom: 3px solid hsl(0, 0%, 70%);
   padding-left: 2em;
   padding-top: 4vh;
@@ -20,8 +25,6 @@
   flex-direction: column;
   text-align: center;
   padding-top: 4vh;
-
-  border-bottom: 3px solid hsl(0, 0%, 70%);
 }
 
 .name {

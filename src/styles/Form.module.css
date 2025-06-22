@@ -3,7 +3,37 @@
   padding-right: 1vw;
   background-color: black;
   color: #fff;
+  display: flex;
+  flex-direction: column;
   min-width: 30%;
+}
+
+.fourBtnsWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3vw;
+  gap: 0.5em;
+}
+
+.eWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+@media (max-width: 950px) {
+  .formDev {
+    width: 100%;
+    align-items: center;
+  }
+  .fourBtnsWrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .eWrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 h1 {
@@ -15,6 +45,7 @@ h1 {
   justify-content: flex-start;
   gap: 0.5em;
   margin-bottom: 3vh;
+  flex-wrap: wrap;
 }
 
 .addTopSpace {
@@ -84,6 +115,7 @@ h1 {
   align-items: center;
   gap: 0.5em;
   margin: 3em 0 3em 0;
+  flex-wrap: wrap;
 }
 .btnNicon {
   display: flex;
