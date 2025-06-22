@@ -23,8 +23,17 @@ function General({
 }) {
   return (
     <>
-      <h2>Personal Details</h2>
-      <div>
+      <h1
+        style={{
+          marginBottom: "8vh",
+          marginTop: "2vh",
+          textAlign: "left",
+          display: "flex",
+        }}
+      >
+        Personal Details
+      </h1>
+      <div className={styles.generalLabel}>
         <label htmlFor="fullName">Full name</label>
         <input
           type="text"
@@ -34,7 +43,7 @@ function General({
           onChange={(e) => setFullName(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="email">
           Email
           <span style={{ color: "gray", fontSize: "0.9em" }}> recommended</span>
@@ -48,9 +57,9 @@ function General({
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="phoneNumber">
-          Phone number{" "}
+          Phone Number{" "}
           <span style={{ color: "gray", fontSize: ".9em" }}> recommended</span>
         </label>
         <input
@@ -62,7 +71,7 @@ function General({
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="address">
           Address
           <span style={{ color: "gray", fontSize: ".9em" }}> recommended</span>
@@ -75,7 +84,7 @@ function General({
           onChange={(e) => setAddress(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="website">Website</label>
         <input
           type="text"
@@ -110,7 +119,7 @@ function AddExperience({
 }) {
   return (
     <div>
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="companyName">Company Name</label>
         <input
           type="text"
@@ -121,7 +130,7 @@ function AddExperience({
           onChange={(e) => setCompanyName(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="positionTitle">Position Title</label>
         <input
           type="text"
@@ -132,19 +141,26 @@ function AddExperience({
           onChange={(e) => setPositionTitle(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="companyStartDate">Start Date</label>
         <input
+          className={styles.dateInput}
           id="companyStartDate"
           name="companyStartDate"
-          type="date"
+          type="text"
+          onFocus={(e) => (e.target.type = "date")}
+          onBlur={(e) => (e.target.type = "text")}
           placeholder="Enter Start Date"
           value={companyStartDate}
           onChange={(e) => setCompanyStartDate(e.target.value)}
         />
+      </div>
+      <div className={styles.generalLabel}>
         <label htmlFor="companyEndDate">End Date</label>
         <input
-          type="date"
+          type="text"
+          onFocus={(e) => (e.target.type = "date")}
+          onBlur={(e) => (e.target.type = "text")}
           id="companyEndDate"
           name="companyEndDate"
           placeholder="Enter End Date"
@@ -152,7 +168,7 @@ function AddExperience({
           onChange={(e) => setCompanyEndDate(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="companyLocation">
           Location{" "}
           <span style={{ color: "gray", fontSize: ".9em" }}> optional</span>
@@ -166,7 +182,7 @@ function AddExperience({
           onChange={(e) => setCompanyLocation(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="mainResponsibs">
           Main Responsibilities{" "}
           <span style={{ color: "gray", fontSize: ".9em" }}> optional</span>
@@ -181,12 +197,16 @@ function AddExperience({
           onChange={(e) => setMainResponsibs(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.threeBtns}>
         <button type="button" onClick={onReset}>
-          <MdDelete /> Delete
+          <span className={styles.btnNicon}>
+            <MdDelete style={{ display: "inline-block" }} /> Delete
+          </span>
         </button>
         <button type="button" onClick={onCancel}>
-          <MdCancel /> Cancel
+          <span className={styles.btnNicon}>
+            <MdCancel style={{ display: "inline-block" }} /> Cancel
+          </span>
         </button>
         <button
           onClick={() =>
@@ -200,7 +220,12 @@ function AddExperience({
             })
           }
         >
-          <FaCheckCircle /> Save
+          <span className={styles.btnNicon}>
+            <FaCheckCircle
+              style={{ display: "inline-block", fontSize: ".85em" }}
+            />{" "}
+            Save
+          </span>
         </button>
       </div>
     </div>
@@ -274,11 +299,13 @@ function Experience({
 
   if (!addExperienceVisiblity) {
     return (
-      <>
+      <fragment style={{ display: "flex", justifyContent: "flex-start" }}>
         <button
           onClick={() => setAddExperienceVisibility(!addExperienceVisiblity)}
         >
-          <IoMdAdd /> Experience
+          <span className={styles.addBtn}>
+            <IoMdAdd style={{ display: "inline-block" }} /> Experience
+          </span>
         </button>
         {companys.map((co) => {
           return (
@@ -299,7 +326,7 @@ function Experience({
             </div>
           );
         })}
-      </>
+      </fragment>
     );
   } else {
     return (
@@ -342,7 +369,7 @@ function AddSchool({
 }) {
   return (
     <div>
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="schoolName">School</label>
         <input
           type="text"
@@ -353,7 +380,7 @@ function AddSchool({
           onChange={(e) => setSchoolName(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="degree">Degree</label>
         <input
           type="text"
@@ -364,10 +391,12 @@ function AddSchool({
           onChange={(e) => setDegree(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="schoolStartDate">Start Date</label>
         <input
-          type="date"
+          type="text"
+          onFocus={(e) => (e.target.type = "date")}
+          onBlur={(e) => (e.target.type = "text")}
           id="schoolStartDate"
           name="schoolStartDate"
           value={schoolStartDate}
@@ -378,7 +407,7 @@ function AddSchool({
         schoolEndDate={schoolEndDate}
         setSchoolEndDate={setSchoolEndDate}
       />
-      <div>
+      <div className={styles.generalLabel}>
         <label htmlFor="schoolLocation">
           Location{" "}
           <span style={{ color: "gray", fontSize: ".9em" }}> optional</span>
@@ -392,12 +421,16 @@ function AddSchool({
           onChange={(e) => setSchoolLocation(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.threeBtns}>
         <button onClick={onReset}>
-          <MdDelete /> Delete
+          <span className={styles.btnNicon}>
+            <MdDelete style={{ display: "inline-block" }} /> Delete
+          </span>
         </button>
         <button onClick={onCancel}>
-          <MdCancel /> Cancel
+          <span className={styles.btnNicon}>
+            <MdCancel style={{ display: "inline-block" }} /> Cancel
+          </span>
         </button>
         <button
           onClick={() => {
@@ -410,7 +443,12 @@ function AddSchool({
             });
           }}
         >
-          <FaCheckCircle /> Save
+          <span className={styles.btnNicon}>
+            <FaCheckCircle
+              style={{ display: "inline-block", fontSize: ".85em" }}
+            />{" "}
+            Save
+          </span>
         </button>
       </div>
     </div>
@@ -481,13 +519,15 @@ function Education({
 
   if (!addSchoolVisiblity) {
     return (
-      <>
+      <fragment style={{ display: "flex", justifyContent: "flex-start" }}>
         <button
           type="button"
           onClick={() => setAddSchoolVisiblity(!addSchoolVisiblity)}
         >
-          <IoMdAdd />
-          Education
+          <span className={styles.addBtn}>
+            <IoMdAdd style={{ display: "inline-block" }} />
+            Education
+          </span>
         </button>
         {schools.map((sc) => {
           return (
@@ -507,7 +547,7 @@ function Education({
             </div>
           );
         })}
-      </>
+      </fragment>
     );
   }
 
@@ -534,18 +574,19 @@ function GraduationInput({ schoolEndDate, setSchoolEndDate }) {
   const [isStudying, setIsStudying] = useState(false);
 
   return (
-    <div>
-      <label>
+    <div className={styles.generalLabel}>
+      <label className={styles.checkboxLabel}>
         <input
           type="checkbox"
           checked={isStudying}
           onChange={(e) => setIsStudying(e.target.checked)}
+          className={styles.checkbox}
         />
         Still studying
       </label>
 
       {!isStudying && (
-        <div>
+        <div className={styles.gradeYear}>
           <label htmlFor="schoolEndDate">Year of graduation</label>
           <input
             type="number"
@@ -584,8 +625,9 @@ export function Form({ setters, submittedData }) {
   const [foldExperience, setFoldExperience] = useState(false);
   const [foldEducation, setFoldEducation] = useState(false);
   const [addExperienceVisiblity, setAddExperienceVisibility] = useState(false);
-
   const [addSchoolVisiblity, setAddSchoolVisiblity] = useState(false);
+  const [edArrRotated, setEdArrRotated] = useState(false);
+  const [exArrRotated, setExArrRotated] = useState(false);
 
   function editResume() {
     setShowEditBtn(false);
@@ -623,15 +665,16 @@ export function Form({ setters, submittedData }) {
     setters.setPhoneNumber(formData.get("phoneNumber"));
     setters.setCompanys(tempCompanys);
     setters.setSchools(tempSchools);
-
     setShowEditBtn(true);
   }
 
   function handleFoldExp() {
+    setExArrRotated(!exArrRotated);
     setFoldExperience(!foldExperience);
   }
 
   function handleFoldEdu() {
+    setEdArrRotated(!edArrRotated);
     setFoldEducation(!foldEducation);
   }
 
@@ -701,9 +744,7 @@ export function Form({ setters, submittedData }) {
   }
 
   return (
-    <div className={styles.form}>
-      <button onClick={loadExample}>Load Example</button>
-      <button onClick={clearResume}>Clear Resume</button>
+    <div className={styles.formDev}>
       <form action={handleSubmit}>
         <General
           fullName={fullName}
@@ -716,16 +757,19 @@ export function Form({ setters, submittedData }) {
           setAddress={setAddress}
           website={website}
           setWebsite={setWebsite}
+          className={styles.general}
         />
         <div>
-          <button type="button" onClick={handleFoldExp}>
-            <div>
-              <h2>
-                <MdWork /> Experiences
-              </h2>
-              <BiSolidDownArrow />
-            </div>
-          </button>
+          <div className={styles.clickableArea} onClick={handleFoldExp}>
+            <h1>
+              <span className={styles.iconAlign}>
+                <MdWork style={{ display: "inline-block" }} /> Experiences
+              </span>
+            </h1>
+            <BiSolidDownArrow
+              className={`${styles.arrow} ${exArrRotated ? styles.rotated : ""}`}
+            />
+          </div>
           {foldExperience && (
             <Experience
               companys={tempCompanys}
@@ -738,14 +782,26 @@ export function Form({ setters, submittedData }) {
           )}
         </div>
         <div>
-          <button type="button" onClick={handleFoldEdu}>
-            <div>
-              <h2>
-                <FaGraduationCap /> Education
-              </h2>
-              <BiSolidDownArrow />
-            </div>
-          </button>
+          <div
+            className={styles.clickableArea}
+            onClick={() => {
+              handleFoldEdu();
+            }}
+          >
+            <h1>
+              <span className={styles.iconAlign}>
+                <FaGraduationCap
+                  style={{
+                    display: "inline-block",
+                  }}
+                />{" "}
+                Education
+              </span>
+            </h1>
+            <BiSolidDownArrow
+              className={`${styles.arrow} ${edArrRotated ? styles.rotated : ""}`}
+            />
+          </div>
           {foldEducation && (
             <Education
               schools={tempSchools}
@@ -757,13 +813,24 @@ export function Form({ setters, submittedData }) {
             />
           )}
         </div>
-        <button type="submit">Submit</button>
+        <div className={`${styles.twoBtns} ${styles.addTopSpace}`}>
+          <button type="submit">Submit</button>
 
-        {showEditBtn && (
-          <button type="button" onClick={editResume}>
-            Edit Resume
+          {showEditBtn && (
+            <button type="button" onClick={editResume}>
+              Edit Resume
+            </button>
+          )}
+        </div>
+
+        <div className={styles.twoBtns}>
+          <button type="button" onClick={loadExample}>
+            Load Example
           </button>
-        )}
+          <button type="button" onClick={clearResume}>
+            Clear Resume
+          </button>
+        </div>
       </form>
     </div>
   );

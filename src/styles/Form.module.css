@@ -1,6 +1,120 @@
-form {
+.formDev {
+  margin-bottom: 5vh;
+}
+
+@media (max-width: 1200px) {
+  .formDev {
+    min-width: 100vw;
+  }
+}
+
+.twoBtns {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5em;
+  margin-bottom: 3vh;
+}
+
+.addTopSpace {
+  margin-top: 10vh;
+}
+
+.generalLabel {
   display: flex;
   flex-direction: column;
-  max-width: 30%;
-  justify-self: right;
+  max-width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1vh;
+  margin-bottom: 2vh;
+  text-align: right;
+}
+.generalLabel label {
+  display: inline-block;
+  white-space: nowrap;
+}
+.generalLabel input {
+  max-width: 100%;
+  border-radius: 10px;
+  border: none;
+  padding: 0.5em;
+}
+.clickableArea {
+  display: flex;
+  gap: 3em;
+  font-size: 0.8rem;
+  padding: 2em 1em 2em 1em;
+  position: relative;
+  cursor: pointer;
+}
+
+.arrow {
+  position: relative;
+  right: 0;
+  font-size: 2rem;
+  align-self: center;
+  transition: transform 0.8s ease;
+  transform: rotate(0deg);
+  overflow: visible;
+}
+
+.rotated {
+  transform: rotate(-180deg);
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iconAlign {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  left: 0;
+  gap: 0.3em;
+  overflow: visible;
+}
+
+.threeBtns {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 3em 0 3em 0;
+}
+.btnNicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.checkbox {
+  transform: scale(1.5) translate(0, -3px);
+  margin-right: 8px; /* optional spacing */
+  cursor: pointer;
+}
+.checkboxLabel {
+  display: flex;
+  align-items: center; /* Align checkbox and text vertically */
+  gap: 8px; /* Optional: spacing between checkbox and text */
+  cursor: pointer;
+}
+
+.gradeYear {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 1em 0 1em 0;
+}
+
+.dateInput::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+  cursor: pointer;
+}
+.dateInput {
+  appearance: none; /* Removes default styling in some browsers */
 }
